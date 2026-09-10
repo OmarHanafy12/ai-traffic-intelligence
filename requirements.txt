@@ -1,0 +1,18 @@
+# Core Computer Vision & Object Tracking
+ultralytics>=8.0.0
+opencv-python>=4.8.0
+filterpy>=1.4.5
+
+# Machine Learning & Analytics
+scikit-learn>=1.3.0
+numpy>=1.24.0
+pandas>=2.0.0
+joblib>=1.3.0
+
+# Interactive Dashboard & UI
+streamlit>=1.30.0
+
+# Utilities
+tqdm>=4.66.0
+Pillow>=10.0.0
+matplotlib>=3.7.0
