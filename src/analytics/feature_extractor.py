@@ -1,5 +1,3 @@
-# feature_extractor
-
 class FeatureExtractor:
 
     def extract(self, vehicles, counts, frame_width, frame_height):
@@ -11,7 +9,7 @@ class FeatureExtractor:
 
         for vehicle in vehicles:
 
-            vehicle_type = vehicle["class_name"]
+            vehicle_type = vehicle.get("class_name", "").lower()
 
             if vehicle_type == "car":
                 cars += 1
@@ -28,7 +26,6 @@ class FeatureExtractor:
         total = len(vehicles)
 
         area = frame_width * frame_height
-
         density = total / area if area else 0
 
         return {
@@ -37,7 +34,7 @@ class FeatureExtractor:
             "motorcycles": motorcycles,
             "buses": buses,
             "trucks": trucks,
-            "in_count": counts["in_count"],
-            "out_count": counts["out_count"],
+            "in_count": counts.get("in_count", 0),
+            "out_count": counts.get("out_count", 0),
             "density": density
         }

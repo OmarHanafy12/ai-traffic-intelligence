@@ -1,8 +1,11 @@
 class VehicleCounter:
 
     def __init__(self, line_y):
+
         self.line_y = line_y
+
         self.counted = set()
+
         self.in_count = 0
         self.out_count = 0
 
@@ -13,23 +16,27 @@ class VehicleCounter:
             vehicle_id = vehicle["id"]
 
             current_y = vehicle["center"][1]
-            previous_y = vehicle.get("previous_y", current_y)
 
-            # Moving down
+            previous_y = vehicle.get(
+                "previous_y",
+                current_y
+            )
+
+            # Moving downward
             if previous_y < self.line_y <= current_y:
 
                 if vehicle_id not in self.counted:
+
                     self.in_count += 1
                     self.counted.add(vehicle_id)
 
-            # Moving up
+            # Moving upward
             elif previous_y > self.line_y >= current_y:
 
                 if vehicle_id not in self.counted:
+
                     self.out_count += 1
                     self.counted.add(vehicle_id)
-
-            vehicle["previous_y"] = current_y
 
         return self.get_counts()
 
